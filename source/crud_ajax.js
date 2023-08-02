@@ -1,4 +1,4 @@
-const modalAjax = $('#') //     id of modal
+const modalAjax = $('#') //     Id of modal
 
 const initEventListeners = () => {
     $(".update-ajax, .delete-ajax, .create-ajax, .detail-ajax").on('click', loadForm);
@@ -37,12 +37,12 @@ const saveForm = (e) => {
         },
 
         success: (response) => {
-            $('.ajax-list').html(response.html_object_list)
+            $('.ajax-list').html(response.html)
             initEventListeners()
             modalAjax.modal("hide");
             title = response.title
             message = response.message
-            alert(`${title} - ${message}`)  //     Here toast with message and title
+            alert(`${title} - ${message}`)  //     Toast with message and title
         },
         error: (response) => {
             title = 'Error'
