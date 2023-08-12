@@ -18,6 +18,10 @@
         <a href="{% url 'delete' object.pk %}" class="btn btn-sm btn-danger delete-ajax m-2">{% trans 'Delete' %}</a>
       </td>
     </tr>
+    {% empty %}
+    <tr>
+      <td colspan="3">{% trans 'No objects' %}</td>
+    </tr>
   {% endfor %}
   </tbody>
 </table>

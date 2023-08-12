@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-12 16:01+0000\n"
-"PO-Revision-Date: 2023-08-12 16:04+0000\n"
+"POT-Creation-Date: 2023-08-12 17:50+0000\n"
+"PO-Revision-Date: 2023-08-12 17:50+0000\n"
 "Last-Translator:   <admin@admin.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -77,6 +77,11 @@ msgstr "Aktualizuj"
 #: templates/delete.html:12
 msgid "Delete"
 msgstr "Usuń"
+
+#: templates/_partials/list_partial.html:23
+#| msgid "New Object"
+msgid "No objects"
+msgstr "Brak elementów do wyświetlenia"
 
 #: templates/base.html:18
 msgid "New Object"
