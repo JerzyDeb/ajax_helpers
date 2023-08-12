@@ -1,0 +1,14 @@
+{% load i18n %}
+<div class="modal-header">
+  <h5 class="modal-title">{{ object }} - {% trans 'Detail' %}</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+  <h4>{% trans 'Description' %}</h4>
+  <p>{{ object.description }}</p>
+  <h4>{% trans 'Number' %}</h4>
+  <p>{{ object.number }}</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans 'Close' %}</button>
+</div>

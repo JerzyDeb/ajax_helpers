@@ -1,0 +1,100 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-12 16:01+0000\n"
+"PO-Revision-Date: 2023-08-12 16:04+0000\n"
+"Last-Translator:   <admin@admin.pl>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"X-Translated-Using: django-rosetta 0.9.9\n"
+
+#: core/ajax_helpers.py:79
+msgid "Object was successfully created"
+msgstr "Element został pomyślnie stworzony"
+
+#: core/ajax_helpers.py:80
+msgid "Created"
+msgstr "Stworzono"
+
+#: core/ajax_helpers.py:92
+msgid "Object was successfully updated"
+msgstr "Element został pomyślnie zaktualizowany"
+
+#: core/ajax_helpers.py:93
+msgid "Updated"
+msgstr "Zaktualizowano"
+
+#: core/ajax_helpers.py:106
+msgid "Object was successfully deleted"
+msgstr "Element został pomyślnie usunięty"
+
+#: core/ajax_helpers.py:107
+msgid "Deleted"
+msgstr "Usunięto"
+
+#: core/models.py:10 templates/_partials/list_partial.html:5
+msgid "Name"
+msgstr "Nazwa"
+
+#: core/models.py:14 templates/detail.html:7
+msgid "Description"
+msgstr "Opis"
+
+#: core/models.py:17 templates/_partials/list_partial.html:6
+#: templates/detail.html:9
+msgid "Number"
+msgstr "Numer"
+
+#: core/models.py:21
+msgid "Test model"
+msgstr "Model testowy"
+
+#: core/models.py:22
+msgid "Test models"
+msgstr "Modele testowe"
+
+#: templates/_partials/list_partial.html:16 templates/detail.html:3
+msgid "Detail"
+msgstr "Szczegóły"
+
+#: templates/_partials/list_partial.html:17 templates/update.html:4
+#: templates/update.html:12
+msgid "Update"
+msgstr "Aktualizuj"
+
+#: templates/_partials/list_partial.html:18 templates/delete.html:4
+#: templates/delete.html:12
+msgid "Delete"
+msgstr "Usuń"
+
+#: templates/base.html:18
+msgid "New Object"
+msgstr "Nowy element"
+
+#: templates/create.html:4
+msgid "Create new Test Model Object"
+msgstr "Utwórz nowy element testowego modelu"
+
+#: templates/create.html:12
+msgid "Create"
+msgstr "Utwórz"
+
+#: templates/create.html:13 templates/delete.html:13 templates/detail.html:13
+#: templates/update.html:13
+msgid "Close"
+msgstr "Zamknij"
+
+#: templates/delete.html:9
+msgid "Are you sure to delete"
+msgstr "Czy na pewno chcesz usunąć"

@@ -1,4 +1,4 @@
-const modalAjax = $('#') //     Id of modal
+const modalAjax = $('#BasicModal')
 
 const initEventListeners = () => {
     $(".update-ajax, .delete-ajax, .create-ajax, .detail-ajax").on('click', loadForm);
@@ -16,6 +16,7 @@ const loadForm = (e) => {
         },
         success: (response) => {
             modalAjax.find(".modal-content").html(response.html);
+            modalAjax.find(".modal-content form").attr('action', btn.attr('href'))
         }
     });
 };
@@ -32,9 +33,6 @@ const saveForm = (e) => {
         data: formData,
         contentType: false,
         processData: false,
-        headers: {
-            'X-CSRFToken': ''  //     Csrf Token from Cookie
-        },
 
         success: (response) => {
             $('.ajax-list').html(response.html)
@@ -42,7 +40,13 @@ const saveForm = (e) => {
             modalAjax.modal("hide");
             title = response.title
             message = response.message
-            alert(`${title} - ${message}`)  //     Toast with message and title
+            Toastify({
+                text: message,
+                backgroundColor: 'green',
+                duration: 3000
+            }).showToast();
+
+            // alert(`${title} - ${message}`)  //     Toast with message
         },
         error: (response) => {
             title = 'Error'
@@ -52,7 +56,11 @@ const saveForm = (e) => {
             } else {
                 message = 'Unexpected error'
             }
-            alert(`${title} - ${message}`)  //     Toast with message and title
+            Toastify({
+                text: message,
+                backgroundColor: 'red',
+                duration: 3000
+            }).showToast();  //     Toast with message
         }
 
     })

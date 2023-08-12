@@ -1,4 +1,4 @@
-"""Ajax views."""
+"""Ajax helpers views."""
 
 # Django
 from django.contrib.messages.views import SuccessMessageMixin
@@ -76,6 +76,7 @@ class AjaxDetailView(AjaxBaseView, DetailView):
 class AjaxCreateView(AjaxBaseView, CreateView):
     """Ajax View to create an object and refresh content in partial_template_name."""
 
+    success_message = _('Object was successfully created')
     title = _('Created')
 
     def get_context_data(self, *args, **kwargs):  # noqa: D102
@@ -88,6 +89,7 @@ class AjaxCreateView(AjaxBaseView, CreateView):
 class AjaxUpdateView(AjaxBaseView, UpdateView):
     """Ajax View to update an object and refresh content in partial_template_name."""
 
+    success_message = _('Object was successfully updated')
     title = _('Updated')
 
     def get_context_data(self, *args, **kwargs):  # noqa: D102
@@ -101,6 +103,7 @@ class AjaxUpdateView(AjaxBaseView, UpdateView):
 class AjaxDeleteView(AjaxBaseView, DeleteView):
     """Ajax View to delete an object and refresh content in partial_template_name."""
 
+    success_message = _('Object was successfully deleted')
     title = _('Deleted')
 
     def get_context_data(self, *args, **kwargs):  # noqa: D102

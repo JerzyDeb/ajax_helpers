@@ -1,0 +1,29 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Ajax helpers</title>
+  <script src="{% static 'js/jquery-3.7.0.min.js' %}"></script>
+  <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'toastify/toastify.min.css' %}" rel="stylesheet" type="text/css">
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-12 p-3">
+      <a class="btn btn-outline-primary create-ajax" href="{% url 'create' %}">{% trans 'New Object' %}</a>
+      <div class="ajax-list">
+        {% include '_partials/list_partial.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+{% include '_partials/modal.html' %}
+<script src="{% static 'toastify/toastify.js' %}"></script>
+<script src="{% static 'js/crud_ajax.js' %}"></script>
+</body>
+</html>
