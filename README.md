@@ -5,7 +5,7 @@ Ajax helpers is a basic Django CRUD views that allows you to manage objects in a
 ## Usage
 1. Load Bootstrap and JQuery to your project
 2. Download `static/js/crud_ajax.js` and load it to your project below JQuery implementation
-3. Download `core/ajax_helpers.py` file and paste it tou your Django app folder
+3. Download `core/ajax_helpers.py` file and paste it to your Django app folder
 4. Create or download `templates/_partials/modal.html` - This is a basic Bootstrap modal without `modal-header`, `modal-body` and `modal-footer` divs. Example:
     ```html
     <!-- modal.html -->
@@ -26,7 +26,16 @@ Ajax helpers is a basic Django CRUD views that allows you to manage objects in a
       {% endfor %}
    </div>
     ```
-6. Create your views based on ajax_helpers views:
+   
+6. Create html file, which include `list_partial.html`:
+   ```html
+      <!-- base.html -->
+      ...
+   
+      {% include 'list_partial.html' %}
+   ```
+   
+7. Create your views based on ajax_helpers views:
     ### DetailView
     ```python
     # views.py
@@ -157,11 +166,10 @@ Ajax helpers is a basic Django CRUD views that allows you to manage objects in a
       </div>
     </form>
     ```
-7. Add call to action links in your `list_partial.html` file:
+8. Add call to action links in your `list_partial.html` file:
     ```html
     <!-- list_partial.html -->
    
-    <a class="create-ajax" href="{% url 'create' %}">Create</a>
     <div class="ajax-list">
       {% for object in object_list %}
         {{ object }}
@@ -171,3 +179,10 @@ Ajax helpers is a basic Django CRUD views that allows you to manage objects in a
       {% endfor %}
    </div>
     ```
+9. Add to your `base.html` file call to create view action:
+   ```html
+      <!-- base.html -->
+      ...
+      <a class="create-ajax" href="{% url 'create' %}">Create</a>
+      {% include 'list_partial.html' %}
+   ```
