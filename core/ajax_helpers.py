@@ -18,11 +18,11 @@ class AjaxBaseView(SuccessMessageMixin, View):
 
     template_name = None
     partial_template_name = None
-    queryset = None
+    model = None
     title = None
 
     def get_queryset(self):  # noqa: D102
-        return self.queryset
+        return self.model.objects.all()
 
     def get_context_data(self, *args, **kwargs):  # noqa: D102
         return {}

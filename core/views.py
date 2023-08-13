@@ -28,17 +28,11 @@ class TestModelUpdateView(AjaxUpdateView):  # noqa: D101
     template_name = 'update.html'
     partial_template_name = '_partials/list_partial.html'
 
-    def get_queryset(self):  # noqa: D102
-        return self.model.objects.all()
-
 
 class TestModelDeleteView(AjaxDeleteView):  # noqa: D101
     model = TestModel
     template_name = 'delete.html'
     partial_template_name = '_partials/list_partial.html'
-
-    def get_queryset(self):  # noqa: D102
-        return self.model.objects.all()
 
 
 class TestModelCreateView(AjaxCreateView):  # noqa: D101
@@ -46,6 +40,3 @@ class TestModelCreateView(AjaxCreateView):  # noqa: D101
     template_name = 'create.html'
     form_class = TestModelForm
     partial_template_name = '_partials/list_partial.html'
-
-    def get_queryset(self):  # noqa: D102
-        return self.model.objects.all()
