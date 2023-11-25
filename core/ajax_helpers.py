@@ -3,9 +3,9 @@
 # Django
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.translation import gettext_lazy as _
 from django.http import JsonResponse
 from django.template.loader import render_to_string
-from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import CreateView
 from django.views.generic import DeleteView
@@ -27,12 +27,15 @@ class AjaxBaseView(SuccessMessageMixin, View):
     def get_context_data(self, *args, **kwargs):  # noqa: D102
         return {}
 
-    def json_response(self, status, template, message=None, title=None):
+    def json_response(self, status, template, form=None, message=None, title=None):
         """Return JsonResponse wih custom values."""
+        context = self.get_context_data()
+        if form:
+            context['form'] = form
         return JsonResponse({
             'html': render_to_string(
                 template,
-                self.get_context_data(),
+                context,
                 self.request,
             ),
             'message': message,
@@ -40,25 +43,26 @@ class AjaxBaseView(SuccessMessageMixin, View):
         }, status=status)
 
     def get(self, request, *args, **kwargs):  # noqa: D102
-        return self.json_response(**{
-            'status': 200,
-            'template': self.template_name,
-        })
+        return self.json_response(
+            status=200,
+            template=self.template_name,
+        )
 
     def form_valid(self, form):  # noqa: D102
         form.save()
-        return self.json_response(**{
-            'status': 200,
-            'template': self.partial_template_name,
-            'message': self.success_message,
-            'title': self.title,
-        })
+        return self.json_response(
+            status=200,
+            template=self.partial_template_name,
+            message=self.success_message,
+            title=self.title,
+        )
 
     def form_invalid(self, form):  # noqa: D102
-        return self.json_response(**{
-            'status': 400,
-            'template': self.template_name,
-        })
+        return self.json_response(
+            status=400,
+            template=self.template_name,
+            form=form,
+        )
 
 
 class AjaxDetailView(AjaxBaseView, DetailView):
@@ -117,9 +121,9 @@ class AjaxDeleteView(AjaxBaseView, DeleteView):
 
     def form_valid(self, request, *args, **kwargs):  # noqa: D102
         self.get_object().delete()
-        return self.json_response(**{
-            'status': 200,
-            'template': self.partial_template_name,
-            'message': self.success_message,
-            'title': self.title,
-        })
+        return self.json_response(
+            status=200,
+            template=self.partial_template_name,
+            message=self.success_message,
+            title=self.title,
+        )
