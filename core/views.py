@@ -15,6 +15,7 @@ from .models import TestModel
 class IndexView(ListView):  # noqa: D101
     model = TestModel
     template_name = 'base.html'
+    paginate_by = 2
 
 
 class TestModelDetailView(AjaxDetailView):  # noqa: D101

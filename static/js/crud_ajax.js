@@ -24,6 +24,8 @@ const saveForm = (e) => {
     e.preventDefault();
     const $form = $(e.currentTarget);
     const $formData = new FormData($form[0]);
+    let pageNumber = $('[aria-current="page"]').text().trim()
+    $formData.append('page', pageNumber)
     let message = '';
     let title = '';
     $.ajax({

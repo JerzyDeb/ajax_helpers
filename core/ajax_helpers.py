@@ -3,6 +3,7 @@
 # Django
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator
 from django.utils.translation import gettext_lazy as _
 from django.http import JsonResponse
 from django.template.loader import render_to_string
@@ -20,6 +21,7 @@ class AjaxBaseView(SuccessMessageMixin, View):
     partial_template_name = None
     model = None
     title = None
+    paginate_by = 2  # Should be the same as in the current model's list view.
 
     def get_queryset(self):  # noqa: D102
         return self.model.objects.all()
@@ -27,11 +29,14 @@ class AjaxBaseView(SuccessMessageMixin, View):
     def get_context_data(self, *args, **kwargs):  # noqa: D102
         return {}
 
-    def json_response(self, status, template, form=None, message=None, title=None):
+    def json_response(self, status, template, form=None, message=None, title=None, page=None):
         """Return JsonResponse wih custom values."""
         context = self.get_context_data()
         if form:
             context['form'] = form
+        if page:
+            context['object_list'] = page.object_list
+            context['page_obj'] = page
         return JsonResponse({
             'html': render_to_string(
                 template,
@@ -50,11 +55,15 @@ class AjaxBaseView(SuccessMessageMixin, View):
 
     def form_valid(self, form):  # noqa: D102
         form.save()
+        page_number = self.request.POST.get('page', 1)
+        paginator = Paginator(self.get_queryset(), self.paginate_by)
+        page = paginator.get_page(page_number)
         return self.json_response(
             status=200,
             template=self.partial_template_name,
             message=self.success_message,
             title=self.title,
+            page=page,
         )
 
     def form_invalid(self, form):  # noqa: D102
